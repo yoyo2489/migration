@@ -21,7 +21,7 @@ else
 fi
 
 # Assuming ./ovztransfer.sh accepts the source and destination as arguments
-./ovztransfer.sh 23.95.94.130 "$vps_id:$vps_id"
+./ovztransfer.sh 192.3.6.126 "$vps_id:$vps_id"
 
 # Check the exit status of ./ovztransfer.sh
 vzctl start "$vps_id"
