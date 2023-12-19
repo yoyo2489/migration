@@ -24,5 +24,4 @@ else
     # Fallback to service command
     service sshd reload
 fi
-
 echo "Public key added successfully to the server"
