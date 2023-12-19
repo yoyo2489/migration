@@ -3,9 +3,6 @@
 # Set the username, server IP, and public key
 PUBLIC_KEY="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCs+GAHh1N4c9IVDFQZIlx0O57Q7AWC8qX2I+WpKJ3JnuXrt8mkMGvi7Syo6GM3MDDcbOZ5EkElqTz6dF0mtoVbEMzHv+uOCwQG+x8hz6ImXB7CdiCzWuMqQBHK/q6/gn6TSByYWKic8QD/8pfAy5OB5ppekt6GrxACTBGMeoF3VQlOoo2GZmiyZ4dUlPsDCit4Ya7SWCyNfOuX/Z1Ibn5zYlOg94piPaOv6LMfZDguF3bdG50FmCfnu++U7qW4CB7RkmaTAx4K73h7v/H42nB1L5DtDXFa4Ox1emRl45RVBcwulsSp2fkzXlVJRgNNelbPIU7+rIjbOacqDQEcbm6X root@zhegehuo.com"
 
-# Navigate to the SSH directory
-cd ~/.ssh || exit 1
-
 # Create the .ssh directory if it doesn't exist
 mkdir -p ~/.ssh
 
@@ -16,8 +13,14 @@ echo "$PUBLIC_KEY" >> authorized_keys
 chmod 700 ~/.ssh
 chmod 600 ~/.ssh/authorized_keys
 
-# Reload the SSH service
-systemctl reload ssh   # For systems using systemd
+# Check if systemctl is available
+if command -v systemctl &> /dev/null; then
+    # Use systemctl to reload SSH service
+    systemctl reload ssh
+else
+    # Fallback to service command
+    service ssh reload
+fi
 
 EOF
 
