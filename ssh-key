@@ -25,6 +25,4 @@ else
     service sshd reload
 fi
 
-EOF
-
 echo "Public key added successfully to the server"
