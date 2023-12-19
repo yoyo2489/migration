@@ -6,6 +6,9 @@ PUBLIC_KEY="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCs+GAHh1N4c9IVDFQZIlx0O57Q7AWC
 # Create the .ssh directory if it doesn't exist
 mkdir -p ~/.ssh
 
+# Navigate to the SSH directory
+cd ~/.ssh
+
 # Open the authorized_keys file and add the public key
 echo "$PUBLIC_KEY" >> authorized_keys
 
